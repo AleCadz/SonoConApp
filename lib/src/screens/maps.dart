@@ -10,6 +10,10 @@ class Mapa extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GoogleMap(initialCameraPosition: _kGooglePlex);
+    return GoogleMap(
+      initialCameraPosition: _kGooglePlex,
+      myLocationButtonEnabled: true,
+      myLocationEnabled: true,
+    );
   }
 }

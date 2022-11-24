@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sonocon/src/screens/acercade.dart';
+import 'package:sonocon/src/screens/clasificaciondecibeles.dart';
+import 'package:sonocon/src/screens/home.dart';
+import 'package:sonocon/src/screens/principal.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -25,30 +29,43 @@ class DrawerWidget extends StatelessWidget {
                 ),
               ],
             ),
-            const ListTile(
+            ListTile(
               contentPadding: EdgeInsets.symmetric(vertical: 10),
-              leading: Icon(Icons.person, size: 50),
-              title: Text("Perfil", style: TextStyle(fontSize: 26)),
+              leading: const Icon(Icons.person, size: 50),
+              title: const Text("Perfil", style: TextStyle(fontSize: 26)),
+              onTap: () {
+                Navigator.pushNamed(context, ClasificacionDeDecibeles.name);
+              },
             ),
-            const ListTile(
+            ListTile(
               contentPadding: EdgeInsets.symmetric(vertical: 10),
-              leading: Icon(Icons.map, size: 50),
-              title: Text("Mapa", style: TextStyle(fontSize: 26)),
+              leading: const Icon(Icons.map, size: 50),
+              title: const Text("Mapa", style: TextStyle(fontSize: 26)),
+              onTap: () {
+                Navigator.pushNamed(context, Home.name);
+              },
             ),
             const ListTile(
               contentPadding: EdgeInsets.symmetric(vertical: 10),
               leading: Icon(Icons.message, size: 50),
               title: Text("Opiniones", style: TextStyle(fontSize: 26)),
             ),
-            const ListTile(
-              contentPadding: EdgeInsets.symmetric(vertical: 10),
-              leading: Icon(Icons.settings, size: 50),
-              title: Text("Ajustes", style: TextStyle(fontSize: 26)),
+            ListTile(
+              contentPadding: const EdgeInsets.symmetric(vertical: 10),
+              leading: const Icon(Icons.settings, size: 50),
+              title: const Text("Clasificacion Decibeles",
+                  style: TextStyle(fontSize: 26)),
+              onTap: () {
+                Navigator.pushNamed(context, ClasificacionDeDecibeles.name);
+              },
             ),
-            const ListTile(
+            ListTile(
               contentPadding: EdgeInsets.symmetric(vertical: 10),
               leading: Icon(Icons.warning, size: 50),
-              title: Text("Detalles", style: TextStyle(fontSize: 26)),
+              title: const Text("Acerca De", style: TextStyle(fontSize: 26)),
+              onTap: () {
+                Navigator.pushNamed(context, AcercaDe.name);
+              },
             ),
           ],
         ),

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sonocon/src/screens/acercade.dart';
+import 'package:sonocon/src/screens/home.dart';
 import 'package:sonocon/src/screens/iniciosesion.dart';
+import 'package:sonocon/src/screens/registro.dart';
 import 'package:sonocon/src/widgets/drawer.dart';
 
 class Principal extends StatelessWidget {
@@ -54,7 +57,9 @@ class Principal extends StatelessWidget {
                       width: tamano.width * 0.74,
                       child: ElevatedButton(
                           style: estiloBoton,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, Registro.name);
+                          },
                           child: const Text("Registrarte")))
                 ],
               ),
