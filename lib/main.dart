@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:sonocon/src/provider/enablebutton.dart';
+import 'package:sonocon/src/provider/loginform.dart';
 import 'package:sonocon/src/screens/acercade.dart';
 import 'package:sonocon/src/screens/clasificaciondecibeles.dart';
+import 'package:sonocon/src/screens/decibeles.dart';
 import 'package:sonocon/src/screens/fotoPerfil.dart';
 import 'package:sonocon/src/screens/home.dart';
 import 'package:sonocon/src/screens/principal.dart';
@@ -20,7 +21,8 @@ class AppState extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => EnableButton(),
+          create: (context) => LoginForm(),
+          lazy: false,
         )
       ],
       child: const MyApp(),
@@ -47,6 +49,7 @@ class MyApp extends StatelessWidget {
           AcercaDe.name: (context) => const AcercaDe(),
           ClasificacionDeDecibeles.name: (context) =>
               const ClasificacionDeDecibeles(),
+          Decibeles.name: (context) => const Decibeles(),
         });
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sonocon/src/provider/loginform.dart';
 
 import 'home.dart';
 
@@ -9,6 +11,7 @@ class InicioSesion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tamano = MediaQuery.of(context).size;
+    final formKeys = Provider.of<LoginForm>(context);
     final estiloBoton = ElevatedButton.styleFrom(
         foregroundColor: Colors.black,
         backgroundColor: const Color(0xFF69A1F5),
@@ -34,41 +37,57 @@ class InicioSesion extends StatelessWidget {
               ),
             ),
             Form(
+                key: formKeys.formKeys,
                 child: Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: tamano.width * 0.1,
-                  vertical: tamano.height * 0.070),
-              child: Column(
-                children: [
-                  TextFormField(
-                      decoration: const InputDecoration(
-                          hintText: "Correo",
-                          hintStyle: TextStyle(fontSize: 30))),
-                  SizedBox(
-                    height: tamano.height * 0.020,
+                  padding: EdgeInsets.symmetric(
+                      horizontal: tamano.width * 0.1,
+                      vertical: tamano.height * 0.070),
+                  child: Column(
+                    children: [
+                      TextFormField(
+                          validator: (value) {
+                            String pattern =
+                                r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                            RegExp regExp = RegExp(pattern);
+                            return regExp.hasMatch(value ?? '')
+                                ? null
+                                : 'El valor ingresado no luce como un correo';
+                          },
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          decoration: const InputDecoration(
+                              hintText: "Correo",
+                              hintStyle: TextStyle(fontSize: 30))),
+                      SizedBox(
+                        height: tamano.height * 0.020,
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                            hintText: "Contraseña",
+                            hintStyle: TextStyle(fontSize: 30)),
+                        obscureText: true,
+                        validator: (value) {
+                          if (value!.length > 7) return null;
+                          return "La contraseña debe tener 8 caracteres o más";
+                        },
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      SizedBox(
+                        width: tamano.width * 0.74,
+                        height: tamano.height * 0.075,
+                        child: ElevatedButton(
+                          style: estiloBoton,
+                          onPressed: () {
+                            Navigator.pushNamed(context, Home.name);
+                          },
+                          child: const Text("Iniciar sesion"),
+                        ),
+                      ),
+                    ],
                   ),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                        hintText: "Contraseña",
-                        hintStyle: TextStyle(fontSize: 30)),
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  SizedBox(
-                    width: tamano.width * 0.74,
-                    height: tamano.height * 0.075,
-                    child: ElevatedButton(
-                      style: estiloBoton,
-                      onPressed: () {
-                        Navigator.pushNamed(context, Home.name);
-                      },
-                      child: const Text("Iniciar sesion"),
-                    ),
-                  ),
-                ],
-              ),
-            ))
+                ))
           ],
         ),
       ),

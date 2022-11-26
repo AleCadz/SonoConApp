@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sonocon/src/screens/acercade.dart';
 import 'package:sonocon/src/screens/clasificaciondecibeles.dart';
+import 'package:sonocon/src/screens/decibeles.dart';
 import 'package:sonocon/src/screens/home.dart';
 import 'package:sonocon/src/screens/principal.dart';
 
@@ -45,10 +46,13 @@ class DrawerWidget extends StatelessWidget {
                 Navigator.pushNamed(context, Home.name);
               },
             ),
-            const ListTile(
+            ListTile(
               contentPadding: EdgeInsets.symmetric(vertical: 10),
-              leading: Icon(Icons.message, size: 50),
-              title: Text("Opiniones", style: TextStyle(fontSize: 26)),
+              leading: const Icon(Icons.message, size: 50),
+              title: const Text("Decibeles", style: TextStyle(fontSize: 26)),
+              onTap: () {
+                Navigator.pushNamed(context, Decibeles.name);
+              },
             ),
             ListTile(
               contentPadding: const EdgeInsets.symmetric(vertical: 10),

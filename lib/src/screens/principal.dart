@@ -5,6 +5,8 @@ import 'package:sonocon/src/screens/iniciosesion.dart';
 import 'package:sonocon/src/screens/registro.dart';
 import 'package:sonocon/src/widgets/drawer.dart';
 
+import '../db/db.dart';
+
 class Principal extends StatelessWidget {
   static const String name = "principal";
   const Principal({super.key});
@@ -20,6 +22,7 @@ class Principal extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontFamily: 'sans-serif.medium'),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)));
+    DBProvider.db.database;
     return Scaffold(
       backgroundColor: const Color(0xFFD4B3FF),
       body: Row(
