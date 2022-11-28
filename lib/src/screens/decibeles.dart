@@ -9,6 +9,7 @@ class Decibeles extends StatefulWidget {
 }
 
 class _DecibelesState extends State<Decibeles> {
+  double decibelMax = 0.0;
   bool _isRecording = false;
   StreamSubscription<NoiseReading>? _noiseSubscription;
   late NoiseMeter _noiseMeter;
@@ -26,6 +27,7 @@ class _DecibelesState extends State<Decibeles> {
   }
 
   void onData(NoiseReading noiseReading) {
+    decibelMax = noiseReading.maxDecibel;
     this.setState(() {
       if (!this._isRecording) {
         this._isRecording = true;
@@ -102,8 +104,8 @@ class _DecibelesState extends State<Decibeles> {
               ),
               Container(
                   color: Colors.deepPurple,
-                  child: const Text(
-                    "DB",
+                  child: Text(
+                    decibelMax.toInt().toString(),
                     style: TextStyle(
                       fontSize: 80,
                       fontWeight: FontWeight.bold,
