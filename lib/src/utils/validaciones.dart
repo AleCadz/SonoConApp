@@ -2,14 +2,23 @@ class Validaciones {
   static String? isValid(String texto, value) {
     switch (texto) {
       case "Nombre":
-        return null;
+        if (value != "") return null;
+        return "Este campo debe contener texto";
       case "Apellido":
+        if (value != "") return null;
+        return "Este campo debe contener texto";
         return null;
       case "Ciudad":
+        if (value != "") return null;
+        return "Este campo debe contener texto";
         return null;
       case "Estado":
+        if (value != "") return null;
+        return "Este campo debe contener texto";
         return null;
       case "Pais":
+        if (value != "") return null;
+        return "Este campo debe contener texto";
         return null;
       case "Correo electronico":
         String pattern =
@@ -19,7 +28,8 @@ class Validaciones {
             ? null
             : 'El valor ingresado no luce como un correo';
       case "Contraseña":
-        return null;
+        if (value!.length > 7) return null;
+        return "La contraseña debe tener 8 caracteres o más";
     }
     return null;
   }

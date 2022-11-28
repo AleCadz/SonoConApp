@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 
-class LoginForm extends ChangeNotifier {
+class RegisterForm extends ChangeNotifier {
   String correo = "";
   String contrasena = "";
+  String nombre = "";
+  String apellido = "";
+  String ciudad = "";
+  String estado = "";
+  String pais = "";
   GlobalKey<FormState> formKeys = GlobalKey<FormState>();
   bool islogin = false;
 

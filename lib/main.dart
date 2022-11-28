@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:sonocon/src/provider/decibelprovider.dart';
 import 'package:sonocon/src/provider/loginform.dart';
+import 'package:sonocon/src/provider/registerform.dart';
 import 'package:sonocon/src/screens/acercade.dart';
 import 'package:sonocon/src/screens/clasificaciondecibeles.dart';
 import 'package:sonocon/src/screens/decibeles.dart';
@@ -11,7 +13,7 @@ import 'package:sonocon/src/screens/principal.dart';
 import 'package:sonocon/src/screens/iniciosesion.dart';
 import 'package:sonocon/src/screens/registro.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const AppState());
 
 class AppState extends StatelessWidget {
   const AppState({super.key});
@@ -22,6 +24,14 @@ class AppState extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => LoginForm(),
+          lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (context) => RegisterForm(),
+          lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (context) => DecibelProvider(),
           lazy: false,
         )
       ],
@@ -49,7 +59,7 @@ class MyApp extends StatelessWidget {
           AcercaDe.name: (context) => const AcercaDe(),
           ClasificacionDeDecibeles.name: (context) =>
               const ClasificacionDeDecibeles(),
-          Decibeles.name: (context) => const Decibeles(),
+          Decibeles.name: (context) => Decibeles(),
         });
   }
 }

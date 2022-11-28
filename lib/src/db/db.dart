@@ -8,6 +8,7 @@ import 'package:path/path.dart';
 class DBProvider {
   static Database? _database;
   static final DBProvider db = DBProvider._();
+  static List<Usuarios> usuarios = [];
 
   DBProvider._();
 
@@ -33,6 +34,12 @@ class DBProvider {
 ''');
       },
     );
+  }
+
+  Future<List<Usuarios>> getUsuarios() async {
+    final db = await database;
+    final res = await db!.query("usuarios");
+    return res.isNotEmpty ? res.map((e) => Usuarios.fromJson(e)).toList() : [];
   }
 
   Future<int> nuevoUsuario(Usuarios usuario) async {

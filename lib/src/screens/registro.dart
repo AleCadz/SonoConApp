@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sonocon/src/db/db.dart';
+import 'package:sonocon/src/models/usuarios.dart';
+import 'package:sonocon/src/provider/registerform.dart';
 import 'package:sonocon/src/screens/fotoPerfil.dart';
 import 'package:sonocon/src/utils/validaciones.dart';
 
@@ -22,7 +25,7 @@ class Registro extends StatelessWidget {
       "Contraseña"
     ];
     final tamano = MediaQuery.of(context).size;
-    final formKeys = Provider.of<LoginForm>(context);
+    final formKeys = Provider.of<RegisterForm>(context);
     final estiloBoton = ElevatedButton.styleFrom(
         foregroundColor: Colors.black,
         backgroundColor: const Color(0xFF69A1F5),
@@ -56,6 +59,33 @@ class Registro extends StatelessWidget {
                         Column(
                           children: [
                             TextFormField(
+                                obscureText:
+                                    textos[i] == "Contraseña" ? true : false,
+                                onChanged: (value) {
+                                  switch (i) {
+                                    case 0:
+                                      formKeys.nombre = value;
+                                      break;
+                                    case 1:
+                                      formKeys.apellido = value;
+                                      break;
+                                    case 2:
+                                      formKeys.ciudad = value;
+                                      break;
+                                    case 3:
+                                      formKeys.estado = value;
+                                      break;
+                                    case 4:
+                                      formKeys.pais = value;
+                                      break;
+                                    case 5:
+                                      formKeys.correo = value;
+                                      break;
+                                    case 6:
+                                      formKeys.contrasena = value;
+                                      break;
+                                  }
+                                },
                                 validator: (value) {
                                   return Validaciones.isValid(textos[i], value);
                                 },
@@ -75,7 +105,19 @@ class Registro extends StatelessWidget {
                         child: ElevatedButton(
                           style: estiloBoton,
                           onPressed: () {
-                            Navigator.pushNamed(context, FotoPerfil.name);
+                            if (formKeys.isValidForm()) {
+                              Usuarios usuario = Usuarios(
+                                  nombre: formKeys.nombre,
+                                  apellido: formKeys.apellido,
+                                  ciudad: formKeys.ciudad,
+                                  estado: formKeys.estado,
+                                  pais: formKeys.pais,
+                                  correo: formKeys.correo,
+                                  contrasena: formKeys.contrasena);
+                              print(usuario.toJson());
+                              DBProvider.db.nuevoUsuario(usuario);
+                              Navigator.pushNamed(context, FotoPerfil.name);
+                            }
                           },
                           child: const Text("Registrarse"),
                         ),

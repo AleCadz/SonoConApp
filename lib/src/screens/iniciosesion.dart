@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sonocon/src/db/db.dart';
+import 'package:sonocon/src/models/usuarios.dart';
 import 'package:sonocon/src/provider/loginform.dart';
+import 'package:sonocon/src/provider/registerform.dart';
 
 import 'home.dart';
 
@@ -10,6 +13,8 @@ class InicioSesion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String usuario = "";
+    String contrasena = "";
     final tamano = MediaQuery.of(context).size;
     final formKeys = Provider.of<LoginForm>(context);
     final estiloBoton = ElevatedButton.styleFrom(
@@ -45,6 +50,9 @@ class InicioSesion extends StatelessWidget {
                   child: Column(
                     children: [
                       TextFormField(
+                          onChanged: (value) {
+                            formKeys.correo = value;
+                          },
                           validator: (value) {
                             String pattern =
                                 r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
@@ -61,6 +69,9 @@ class InicioSesion extends StatelessWidget {
                         height: tamano.height * 0.020,
                       ),
                       TextFormField(
+                        onChanged: (value) {
+                          formKeys.contrasena = value;
+                        },
                         decoration: const InputDecoration(
                             hintText: "Contraseña",
                             hintStyle: TextStyle(fontSize: 30)),
@@ -79,8 +90,17 @@ class InicioSesion extends StatelessWidget {
                         height: tamano.height * 0.075,
                         child: ElevatedButton(
                           style: estiloBoton,
-                          onPressed: () {
-                            Navigator.pushNamed(context, Home.name);
+                          onPressed: () async {
+                            if (formKeys.isValidForm()) {
+                              final lista = await DBProvider.db.getUsuarios();
+                              for (int i = 0; i < lista.length; i++) {
+                                if (lista[i].correo == formKeys.correo &&
+                                    lista[i].contrasena ==
+                                        formKeys.contrasena) {
+                                  Navigator.pushNamed(context, Home.name);
+                                }
+                              }
+                            }
                           },
                           child: const Text("Iniciar sesion"),
                         ),

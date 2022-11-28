@@ -4,7 +4,7 @@ class Usuarios {
   String? ciudad;
   String? estado;
   String? pais;
-  String? correoElectronico;
+  String? correo;
   String? contrasena;
 
   Usuarios(
@@ -13,7 +13,7 @@ class Usuarios {
       this.ciudad,
       this.estado,
       this.pais,
-      this.correoElectronico,
+      this.correo,
       this.contrasena});
 
   factory Usuarios.fromJson(Map<String, dynamic> json) => Usuarios(
@@ -21,7 +21,7 @@ class Usuarios {
       apellido: json["apellido"],
       ciudad: json["ciudad"],
       contrasena: json["contrasena"],
-      correoElectronico: json["correoElectronico"],
+      correo: json["correo"],
       estado: json["estado"],
       pais: json["pais"]);
 
@@ -30,7 +30,7 @@ class Usuarios {
         "apellido": apellido,
         "ciudad": ciudad,
         "contrasena": contrasena,
-        "correoElectronico": correoElectronico,
+        "correo": correo,
         "estado": estado,
         "pais": pais
       };
