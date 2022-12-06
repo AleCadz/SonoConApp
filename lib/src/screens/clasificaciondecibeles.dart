@@ -9,7 +9,7 @@ class ClasificacionDeDecibeles extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: const Color(0xFFD4B3FF),
+        backgroundColor: const Color(0xFFceabb1),
         title: const Text(
           "SONOCON",
           style: TextStyle(

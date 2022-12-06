@@ -10,7 +10,7 @@ class FotoPerfil extends StatelessWidget {
     final tamano = MediaQuery.of(context).size;
     final estiloBoton = ElevatedButton.styleFrom(
         foregroundColor: Colors.black,
-        backgroundColor: const Color(0xFF69A1F5),
+        backgroundColor: const Color(0xFFceabb1),
         textStyle: const TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
@@ -52,6 +52,11 @@ class FotoPerfil extends StatelessWidget {
                   height: 50,
                 ),
                 TextFormField(
+                    onChanged: ((value) {}),
+                    validator: (value) {
+                      if (value != "") return null;
+                      return "Este campo debe contener texto";
+                    },
                     decoration: const InputDecoration(
                         hintText: "Nombre de usuario",
                         hintStyle: TextStyle(fontSize: 30))),

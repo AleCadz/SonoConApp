@@ -24,7 +24,7 @@ class Principal extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)));
     DBProvider.db.database;
     return Scaffold(
-      backgroundColor: const Color(0xFFD4B3FF),
+      backgroundColor: const Color(0xFFceabb1),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -37,7 +37,8 @@ class Principal extends StatelessWidget {
                       width: tamano.width * 0.7,
                       height: tamano.height * 0.4,
                       child: const Image(
-                          image: AssetImage("assets/img/imgico.png"))),
+                          image:
+                              AssetImage("assets/img/iconosonocondef.jpeg"))),
                   SizedBox(
                     height: tamano.height * 0.065,
                   ),

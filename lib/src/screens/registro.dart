@@ -28,7 +28,7 @@ class Registro extends StatelessWidget {
     final formKeys = Provider.of<RegisterForm>(context);
     final estiloBoton = ElevatedButton.styleFrom(
         foregroundColor: Colors.black,
-        backgroundColor: const Color(0xFF69A1F5),
+        backgroundColor: const Color(0xFFceabb1),
         textStyle: const TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
@@ -37,7 +37,7 @@ class Registro extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Color(0xFFD4B3FF),
+        backgroundColor: Color(0xFFceabb1),
         title: const Text(
           "SONOCON",
           style: TextStyle(

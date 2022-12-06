@@ -3,7 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Mapa extends StatelessWidget {
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
+    target: LatLng(22.7433, -98.9747),
     zoom: 14.4746,
   );
   const Mapa({super.key});

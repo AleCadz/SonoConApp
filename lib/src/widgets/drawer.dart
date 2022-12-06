@@ -32,8 +32,9 @@ class DrawerWidget extends StatelessWidget {
             ),
             ListTile(
               contentPadding: EdgeInsets.symmetric(vertical: 10),
-              leading: const Icon(Icons.person, size: 50),
-              title: const Text("Perfil", style: TextStyle(fontSize: 26)),
+              leading: const Icon(Icons.music_note, size: 50),
+              title: const Text("Clasificacion de decibeles",
+                  style: TextStyle(fontSize: 26)),
               onTap: () {
                 Navigator.pushNamed(context, ClasificacionDeDecibeles.name);
               },
@@ -48,25 +49,17 @@ class DrawerWidget extends StatelessWidget {
             ),
             ListTile(
               contentPadding: EdgeInsets.symmetric(vertical: 10),
-              leading: const Icon(Icons.message, size: 50),
-              title: const Text("Decibeles", style: TextStyle(fontSize: 26)),
+              leading: const Icon(Icons.numbers_outlined, size: 50),
+              title: const Text("Medidor de decibeles",
+                  style: TextStyle(fontSize: 26)),
               onTap: () {
                 Navigator.pushNamed(context, Decibeles.name);
               },
             ),
             ListTile(
               contentPadding: const EdgeInsets.symmetric(vertical: 10),
-              leading: const Icon(Icons.settings, size: 50),
-              title: const Text("Clasificacion Decibeles",
-                  style: TextStyle(fontSize: 26)),
-              onTap: () {
-                Navigator.pushNamed(context, ClasificacionDeDecibeles.name);
-              },
-            ),
-            ListTile(
-              contentPadding: EdgeInsets.symmetric(vertical: 10),
-              leading: Icon(Icons.warning, size: 50),
-              title: const Text("Acerca De", style: TextStyle(fontSize: 26)),
+              leading: const Icon(Icons.info, size: 50),
+              title: const Text("Acerca de", style: TextStyle(fontSize: 26)),
               onTap: () {
                 Navigator.pushNamed(context, AcercaDe.name);
               },

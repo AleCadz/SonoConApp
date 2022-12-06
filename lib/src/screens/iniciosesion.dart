@@ -19,7 +19,7 @@ class InicioSesion extends StatelessWidget {
     final formKeys = Provider.of<LoginForm>(context);
     final estiloBoton = ElevatedButton.styleFrom(
         foregroundColor: Colors.black,
-        backgroundColor: const Color(0xFF69A1F5),
+        backgroundColor: const Color(0xFFceabb1),
         textStyle: const TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
@@ -32,11 +32,11 @@ class InicioSesion extends StatelessWidget {
             Container(
               width: double.infinity,
               height: tamano.height * 0.375,
-              color: const Color(0xFFD4B3FF),
+              color: const Color(0xFFceabb1),
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: tamano.width * 0.2),
                 child: const Image(
-                  image: AssetImage("assets/img/imgico.png"),
+                  image: AssetImage("assets/img/iconosonocondef.jpeg"),
                   fit: BoxFit.contain,
                 ),
               ),
