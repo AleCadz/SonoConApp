@@ -1,6 +1,6 @@
 # sonocon
 
-A new Flutter project.
+Decibel counting app
 
 ## Getting Started
 
